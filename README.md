@@ -42,6 +42,34 @@ A Java/Spark application with a rest REST API for querying and retrieving scoped
 |/department/:id                                 |post         |    add department and give it an id        |
 |/users/:id                                      |post         |    add user and give it an id              |
 
+### Routes keywords
+
+When creating objecs using postman, here are the samples to use
+### users
+```
+{
+    "name": "Managu",
+    "username": "Allan",
+    "department_id": 2,
+     "role" :"Admin"
+   
+}
+```
+### Department
+```
+{
+    "name":"Development"
+}
+```
+### News
+```
+"title":"Delani Studio Collapse",
+"department_id":3,
+"category":"Departmental"'
+"news_details":"Delani studio website has collapsed. This is due to poor development and deployment by all teams"
+
+```
+
 # Contact Information:
 ### Author: [Allan Limo](https://github.com/allanlimo02)
 
