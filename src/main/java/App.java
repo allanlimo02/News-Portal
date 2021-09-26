@@ -1,3 +1,5 @@
+import Departments.Departments;
+import News.News;
 import Sql20Dao.Sql2oDepartment;
 import Sql20Dao.Sql2oNews;
 import Sql20Dao.Sql2oUsers;
@@ -28,12 +30,12 @@ public class App {
         //###################### User Routes ##########################
 
         //add new user
-        post("/users/new", "application/json", (req, res) -> { //accept a request in format JSON
-            Users user = gson.fromJson(req.body(), Users.class);//make with GSON
-            sql2oUsers.add(user);//Do our thing with our DAO
-            res.status(201);//everything went well - update the response status code
+        post("/users/new", "application/json", (req, res) -> {
+            Users user = gson.fromJson(req.body(), Users.class);
+            sql2oUsers.add(user);
+            res.status(201);
             res.type("application/json");
-            return gson.toJson(user);//send it back to be displayed
+            return gson.toJson(user);
         });
         // get all users
         get("/users", "application/json", (req, res) -> { //accept a request in format JSON from an app
@@ -42,9 +44,33 @@ public class App {
         });
         //####################### Department routes #########################
         //create a new department
+        post("/department/new", "application/json", (req, res) -> {
+            Departments department = gson.fromJson(req.body(), Departments.class);
+            sql2oDepartment.add(department);
+            res.status(201);
+            res.type("application/json");
+            return gson.toJson(department);
+        });
 
+        // Check all departments
+        get("/departments", "application/json", (req, res) -> { //accept a request in format JSON from an app
+            res.type("application/json");
+            return gson.toJson(sql2oDepartment.getAll());//send it back to be displayed
+        });
 
         //###################### News Routes ##########################
+        // Post method for News
+        post("/news/new", "application/json", (req, res) -> {
+            News news = gson.fromJson(req.body(), News.class);
+            sql2oNews.add(news);
+            res.status(201);
+            res.type("application/json");
+            return gson.toJson(news);
+        });
+        get("/news", "application/json", (req, res) -> { //accept a request in format JSON from an app
+            res.type("application/json");
+            return gson.toJson(sql2oNews.findAll());//send it back to be displayed
+        });
 
 
         }
