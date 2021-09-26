@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface NewsDao {
     //create
-    void add();
+    void add(News news);
 
     // reading
     List<News> findAll();

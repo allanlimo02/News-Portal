@@ -1,5 +1,7 @@
 package News;
 
+import java.util.Objects;
+
 public class News {
     private int id;
     private int departmentId;
@@ -12,6 +14,19 @@ public class News {
         this.title = title;
         this.newsType = newsType;
         this.newsDetails = newsDetails;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        News news = (News) o;
+        return id == news.id && departmentId == news.departmentId && Objects.equals(title, news.title) && Objects.equals(newsType, news.newsType) && Objects.equals(newsDetails, news.newsDetails);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, departmentId, title, newsType, newsDetails);
     }
 
     public int getId() {

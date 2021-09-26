@@ -15,9 +15,14 @@ public class Sql2oNews implements NewsDao {
 
 
     @Override
-    public void add() {
+    public void add(News news) {
+        String sql="INSERT INTO news (title,department_id,news_type,news_details) VALUES (:title,:departmentId,:newsType, :newsDetails)";
         try(Connection conn=sql2o.open()) {
-
+           int id=(int) conn.createQuery(sql,true)
+                    .bind(news)
+                    .executeUpdate()
+                    .getKey();
+           //news.getId(id); Couldn't fetch the getId();
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -26,13 +31,10 @@ public class Sql2oNews implements NewsDao {
 
     @Override
     public List<News> findAll() {
-
-        try(Connection conn=sql2o.open()) {
-
-        }catch(Exception ex){
-            ex.printStackTrace();
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery("SELECT * FROM news")
+                    .executeAndFetch(News.class);
         }
-        return null;
     }
 
     @Override
@@ -48,7 +50,8 @@ public class Sql2oNews implements NewsDao {
     @Override
     public void delete() {
         try(Connection conn=sql2o.open()) {
-
+            conn.createQuery("DELETE FROM news")
+                    .executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
         }
