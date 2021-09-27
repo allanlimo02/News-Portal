@@ -48,7 +48,6 @@ When creating objecs using postman, here are the samples to use
 ### users
 ```
 {
-    "name": "Managu",
     "username": "Allan",
     "department_id": 2,
      "role" :"Admin"
