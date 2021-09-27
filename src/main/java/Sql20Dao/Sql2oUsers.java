@@ -16,13 +16,13 @@ public class Sql2oUsers implements UsersDao {
 
     @Override
     public void add(Users users) {
-        String sql="INSERT INTO users (username,department_id,role) VALUES (:username,:department_id :role)";
+        String sql="INSERT INTO users (username,department_id,role) VALUES (:username,:department_id ,:role)";
         try (Connection conn=sql2o.open()){
             int id=(int)conn.createQuery(sql,true)
                     .bind(users)
                     .executeUpdate()
                     .getKey();
-//            users.getId(); -- Could not equate id ti getId()!!!
+            users.setId(id);
         }catch(Exception ex){
             ex.printStackTrace();
         }

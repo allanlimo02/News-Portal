@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class News {
     private int id;
-    private int departmentId;
+    private int department_id;
     private String title;
-    private String newsType;
-    private String newsDetails;
+    private String category;
+    private String news_details;
 
     public News(int departmentId, String title, String newsType, String newsDetails) {
-        this.departmentId = departmentId;
+        this.department_id = departmentId;
         this.title = title;
-        this.newsType = newsType;
-        this.newsDetails = newsDetails;
+        this.category = newsType;
+        this.news_details = newsDetails;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class News {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         News news = (News) o;
-        return id == news.id && departmentId == news.departmentId && Objects.equals(title, news.title) && Objects.equals(newsType, news.newsType) && Objects.equals(newsDetails, news.newsDetails);
+        return id == news.id && department_id == news.department_id && Objects.equals(title, news.title) && Objects.equals(category, news.category) && Objects.equals(news_details, news.news_details);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, departmentId, title, newsType, newsDetails);
+        return Objects.hash(id, department_id, title, category, news_details);
     }
 
     public int getId() {
@@ -37,12 +37,12 @@ public class News {
         this.id = id;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public int getDepartment_id() {
+        return department_id;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
     }
 
     public String getTitle() {
@@ -53,19 +53,19 @@ public class News {
         this.title = title;
     }
 
-    public String getNewsType() {
-        return newsType;
+    public String getCategory() {
+        return category;
     }
 
-    public void setNewsType(String newsType) {
-        this.newsType = newsType;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public String getNewsDetails() {
-        return newsDetails;
+    public String getNews_details() {
+        return news_details;
     }
 
-    public void setNewsDetails(String newsDetails) {
-        this.newsDetails = newsDetails;
+    public void setNews_details(String news_details) {
+        this.news_details = news_details;
     }
 }
