@@ -4,6 +4,7 @@ import Dao.UsersDao;
 import Users.Users;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
 
 import java.util.List;
 
@@ -20,11 +21,12 @@ public class Sql2oUsers implements UsersDao {
         try (Connection conn=sql2o.open()){
             int id=(int)conn.createQuery(sql,true)
                     .bind(users)
+                    .throwOnMappingFailure(false)
                     .executeUpdate()
                     .getKey();
             users.setId(id);
-        }catch(Exception ex){
-            ex.printStackTrace();
+        }catch(Sql2oException e){
+            System.out.println(e);
         }
     }
 

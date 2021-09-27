@@ -4,17 +4,15 @@ import Sql20Dao.Sql2oDepartment;
 import Sql20Dao.Sql2oNews;
 import Sql20Dao.Sql2oUsers;
 import Users.Users;
+
 import org.sql2o.Connection;
 import com.google.gson.Gson;
 import org.sql2o.Sql2o;
-
 import static spark.Spark.*;
 
 
 public class App {
-    public static int add(int x, int y){
-        return (x+y);
-    }
+
     public static void main(String[] args) {
         Connection conn;
         Sql2oNews sql2oNews;
@@ -22,12 +20,13 @@ public class App {
         Sql2oDepartment sql2oDepartment;
         Gson gson = new Gson();
 
-        String connectionString = "jdbc:h2:~/news_portal.db;INIT=RUNSCRIPT from 'classpath:Db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        String connectionString = "jdbc:h2:~/localhost.db;INIT=RUNSCRIPT from 'classpath:Db/create.sql'";
+        Sql2o sql2o = new Sql2o(connectionString, "ngetich", "12345");
         sql2oNews = new Sql2oNews(sql2o);
         sql2oDepartment =new Sql2oDepartment(sql2o);
         sql2oUsers =new Sql2oUsers(sql2o);
-        //conn = sql2o.open();
+      conn = sql2o.open();
+        staticFileLocation("resources");
 
         //###################### User Routes ##########################
 
@@ -41,6 +40,7 @@ public class App {
         });
         // get all users
         get("/users", "application/json", (req, res) -> {
+
             res.type("application/json");
             return gson.toJson(sql2oUsers.findAll());
         });

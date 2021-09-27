@@ -22,8 +22,7 @@ public class AppTest {
 
     @Test
     public void add_isCorrect() throws Exception {
-        int sum=App.add(5,6);
-        assertEquals(11,sum);
+
     }
 
     @Test
