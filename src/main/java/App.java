@@ -12,6 +12,9 @@ import static spark.Spark.*;
 
 
 public class App {
+    public static int add(int x, int y){
+        return (x+y);
+    }
     public static void main(String[] args) {
         Connection conn;
         Sql2oNews sql2oNews;
@@ -24,8 +27,7 @@ public class App {
         sql2oNews = new Sql2oNews(sql2o);
         sql2oDepartment =new Sql2oDepartment(sql2o);
         sql2oUsers =new Sql2oUsers(sql2o);
-
-        conn = sql2o.open();
+        //conn = sql2o.open();
 
         //###################### User Routes ##########################
 
@@ -38,9 +40,9 @@ public class App {
             return gson.toJson(user);
         });
         // get all users
-        get("/users", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/users", "application/json", (req, res) -> {
             res.type("application/json");
-            return gson.toJson(sql2oUsers.findAll());//send it back to be displayed
+            return gson.toJson(sql2oUsers.findAll());
         });
         //####################### Department routes #########################
         //create a new department
@@ -53,9 +55,9 @@ public class App {
         });
 
         // Check all departments
-        get("/departments", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/departments", "application/json", (req, res) -> {
             res.type("application/json");
-            return gson.toJson(sql2oDepartment.getAll());//send it back to be displayed
+            return gson.toJson(sql2oDepartment.getAll());
         });
 
         //###################### News Routes ##########################
@@ -67,9 +69,9 @@ public class App {
             res.type("application/json");
             return gson.toJson(news);
         });
-        get("/news", "application/json", (req, res) -> { //accept a request in format JSON from an app
+        get("/news", "application/json", (req, res) -> {
             res.type("application/json");
-            return gson.toJson(sql2oNews.findAll());//send it back to be displayed
+            return gson.toJson(sql2oNews.findAll());
         });
 
 
