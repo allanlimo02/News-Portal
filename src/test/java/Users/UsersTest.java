@@ -20,7 +20,7 @@ class UsersTest {
     @Test
     void test_getName_works_correctly() {
         Users testUsers = new Users("Allan",2,"Manager");
-        assertEquals("Allan",testUsers.getName());
+        assertEquals("Allan",testUsers.getUsername());
     }
 
     @Test
@@ -30,7 +30,7 @@ class UsersTest {
     @Test
     void getDepartmentId() {
         Users testUsers = new Users("Allan",2,"Manager");
-        assertEquals(2,testUsers.getDepartmentId());
+        assertEquals(2,testUsers.getDepartment_id());
     }
 
     @Test
