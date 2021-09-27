@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
 public class DepartmentsTest {
 
     @Before
@@ -13,10 +14,14 @@ public class DepartmentsTest {
 
     @After
     public void tearDown() throws Exception {
+
     }
 
     @Test
     public void getDepartment_name() {
+        Departments departments= new Departments("Developers");
+        assertEquals("Developers",departments.getDepartment_name());
+
     }
 
     @Test
