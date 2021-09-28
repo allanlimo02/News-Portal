@@ -9,10 +9,6 @@ public interface DepartmentDao {
 
     //read from database
     List<Departments>getAll();
-
-    // update to database
-    void update(Departments departments);
-
     //delete
     void deleteAll();
 

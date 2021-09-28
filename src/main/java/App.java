@@ -40,13 +40,19 @@ public class App {
         });
         // get all users
         get("/users", "application/json", (req, res) -> {
-
             res.type("application/json");
             return gson.toJson(sql2oUsers.findAll());
         });
+        //delete
+//        post("/delete/users","application/json",(req,res)->{
+//            Users users=gson.fromJson(req.body(),Users.class);
+//            sql2oUsers.delete(users);
+//            res.status(201);
+//        });
+
         //####################### Department routes #########################
         //create a new department
-        post("/department/new", "application/json", (req, res) -> {
+        post("/departments/new", "application/json", (req, res) -> {
             Departments department = gson.fromJson(req.body(), Departments.class);
             sql2oDepartment.add(department);
             res.status(201);
@@ -72,6 +78,10 @@ public class App {
         get("/news", "application/json", (req, res) -> {
             res.type("application/json");
             return gson.toJson(sql2oNews.findAll());
+        });
+        //Filters
+        after((req, res) ->{
+            res.type("application/json");
         });
 
 

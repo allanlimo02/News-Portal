@@ -13,8 +13,8 @@ public interface UsersDao {
     List<Users> findAll();
 
     //updating
-    void update();
+
 
     //delete
-    void delete();
+    void delete(Users users);
 }

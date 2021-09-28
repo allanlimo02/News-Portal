@@ -1,6 +1,6 @@
 SET MODE PostgreSQL;
 
---CREATE DATABASE news_portal;
+--CREATE DATABASE  ALIAS news_portal;
 --\c news_portal;
 
 CREATE TABLE IF NOT EXISTS departments  (

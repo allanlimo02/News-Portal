@@ -9,10 +9,6 @@ public interface NewsDao {
 
     // reading
     List<News> findAll();
-
-    //updating
-    void update();
-
     //delete
     void delete();
 

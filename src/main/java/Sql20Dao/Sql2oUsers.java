@@ -29,39 +29,24 @@ public class Sql2oUsers implements UsersDao {
             System.out.println(e);
         }
     }
-
     @Override
     public List<Users> findAll() {
-        String sql="SELECT * FROM users";
+//        String sql="SELECT * FROM users";
         try(Connection conn=sql2o.open()) {
-
-
+            conn.createQuery("SELECT * FROM users")
+                    .executeAndFetch(Users.class);
         }catch(Exception ex){
             ex.printStackTrace();
         }
-
-
         return null;
     }
-
     @Override
-    public void update() {
-        try(Connection conn=sql2o.open()) {
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-
-    }
-
-    @Override
-    public void delete() {
+    public void delete(Users users) {
         try(Connection conn=sql2o.open()) {
             conn.createQuery("DELETE FROM users")
                     .executeUpdate();
         }catch(Exception ex){
             ex.printStackTrace();
         }
-
     }
 }

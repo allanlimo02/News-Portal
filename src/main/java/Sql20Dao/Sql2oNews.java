@@ -34,17 +34,6 @@ public class Sql2oNews implements NewsDao {
                     .executeAndFetch(News.class);
         }
     }
-
-    @Override
-    public void update() {
-        try(Connection conn=sql2o.open()) {
-
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-
-    }
-
     @Override
     public void delete() {
         try(Connection conn=sql2o.open()) {
