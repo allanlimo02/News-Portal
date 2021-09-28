@@ -22,7 +22,7 @@ public class Sql2oNews implements NewsDao {
                     .bind(news)
                     .executeUpdate()
                     .getKey();
-           //news.getId(id); Couldn't fetch the getId();
+           news.setId(id);
         }catch(Exception ex){
             ex.printStackTrace();
         }

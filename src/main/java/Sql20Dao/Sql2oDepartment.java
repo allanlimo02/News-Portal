@@ -29,13 +29,10 @@ public class Sql2oDepartment implements DepartmentDao {
     }
     @Override
     public List<Departments> getAll() {
-        try(Connection conn=sql2o.open()) {
-            conn.createQuery("SELECT * FROM departments")
+        Connection conn=sql2o.open();
+            return conn.createQuery("SELECT * FROM departments")
                     .executeAndFetch(Departments.class);
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return null;
+
     }
     @Override
     public void deleteAll() {
